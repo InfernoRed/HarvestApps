@@ -5,6 +5,7 @@ using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Newtonsoft.Json;
 using NHarvestApi;
+using NHarvestApi.Harvest;
 
 namespace HarvestApps.WinStore
 {
@@ -78,6 +79,8 @@ namespace HarvestApps.WinStore
         }
     }
 
+    // TODO: probably move all DTO classes to Core.IRT or something
+    // TODO: probably could define a custom Newtonsoft.Json.Converters.JsonConverter to eliminate the need for the Hash class if all we want is the User class
     class Hash
     {
         public User User { get; set; }
@@ -101,4 +104,5 @@ namespace HarvestApps.WinStore
         }
     }
 
+    // TODO: create DayEntry and DayEntries classes in Core.IRT for totaling hours and doing other calculations (see https://github.com/harvesthq/api/blob/master/Sections/Reports.md#get-all-time-entries-logged-by-a-user-for-a-given-timeframe and examples at the bottom of https://github.com/gabrieljoelc/NHarvestApi/blob/master/Source/NHarvestApi.KeepinItSimpleSmokeSignalConsoleApp/Program.cs) 
 }
