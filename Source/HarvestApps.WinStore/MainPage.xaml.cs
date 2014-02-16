@@ -53,11 +53,11 @@ namespace HarvestApps.WinStore
 
         private async void Submit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Expression<Func<IResourcePathFactory, string>> uriFactoryExpression = factory => factory.WhoAmI();
+            Expression<Func<IHarvestResourcePathFactory, string>> uriFactoryExpression = factory => factory.WhoAmI();
             await Get<Hash>(uriFactoryExpression);
         }
 
-        private async Task Get<T>(Expression<Func<IResourcePathFactory, string>> uriFactoryExpression)
+        private async Task Get<T>(Expression<Func<IHarvestResourcePathFactory, string>> uriFactoryExpression)
         {
             if (!string.IsNullOrWhiteSpace(SubdomainBox.Text) && !string.IsNullOrWhiteSpace(UsernameBox.Text) &&
                 !string.IsNullOrWhiteSpace(PasswordBox.Password))
@@ -90,9 +90,9 @@ namespace HarvestApps.WinStore
     public class User
     {
         public int Id { get; set; }
-        [JsonProperty(PropertyName = "first_name")]
+
         public string FirstName { get; set; }
-        [JsonProperty(PropertyName = "last_name")]
+
         public string LastName { get; set; }
 
         public override string ToString()
